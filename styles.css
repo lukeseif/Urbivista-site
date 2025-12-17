@@ -1,58 +1,52 @@
-/* Basic reset and font */
+/* ---------------- Reset & Font ---------------- */
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
-  background-color: #F9FAFB;
-  background-image: url('pattern.svg'); /* your uploaded SVG file */
+  background-color: #F9FAFB; /* fallback light background */
+  background-image: url('pattern.svg'); /* subtle SVG texture */
   background-repeat: repeat;
-  background-size: 100px 100px; /* adjust spacing as needed */
+  background-size: 120px 120px;
   color: #111827;
 }
 
-/* Header / nav */
-.nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.nav a {
-  margin-left: 32px;
-  text-decoration: none;
-  font-size: 14px;
-  color: #6B7280;
-}
-
-.nav a:hover {
-  color: #1E3A8A;
-}
-
-/* Hero section */
+/* ---------------- Hero Section ---------------- */
 .hero {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 120px 32px;
+  padding: 140px 32px;
+  text-align: left;
+  overflow: hidden;
+}
+
+/* Overlay to make text readable */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(249, 250, 251, 0.6); /* soft white overlay */
+  z-index: 0;
+}
+
+.hero h1,
+.hero p,
+.hero .buttons {
+  position: relative; /* above overlay */
+  z-index: 1;
 }
 
 .hero h1 {
-  font-size: 48px;
+  font-size: 52px;
   font-weight: 500;
+  line-height: 1.15;
+  color: #1E3A8A; /* medium-dark blue */
   max-width: 700px;
-  line-height: 1.1;
 }
 
 .hero p {
   margin-top: 24px;
   font-size: 18px;
-  color: #6B7280;
+  color: #4B5563; /* grey for supporting text */
   max-width: 600px;
 }
 
@@ -61,48 +55,71 @@ body {
 }
 
 .primary {
-  background: #1E3A8A;
+  background-color: #1E3A8A; /* medium-dark blue */
   color: white;
-  padding: 14px 24px;
-  border-radius: 6px;
+  padding: 14px 28px;
+  border-radius: 8px;
   text-decoration: none;
-  font-size: 14px;
-  margin-right: 12px;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.primary:hover {
+  background-color: #1D4ED8; /* slightly lighter blue on hover */
 }
 
 .secondary {
   border: 1px solid #E5E7EB;
-  padding: 14px 24px;
-  border-radius: 6px;
+  padding: 14px 28px;
+  border-radius: 8px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
   color: #111827;
 }
 
-/* Features section */
+/* ---------------- Features Section ---------------- */
 .features {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px 120px;
+  padding: 80px 32px 140px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 24px;
 }
 
 .features div {
-  background: #F3F4F6;
+  background-color: #F3F4F6;
   padding: 32px;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.features div:hover {
+  transform: translateY(-5px); /* subtle lift on hover */
 }
 
 .features h3 {
   font-size: 18px;
   font-weight: 500;
+  color: #1E3A8A;
 }
 
 .features p {
-  font-size: 14px;
-  color: #6B7280;
   margin-top: 12px;
+  font-size: 14px;
+  color: #4B5563;
+}
+
+/* ---------------- Subtle Floating Shapes (Optional) ---------------- */
+.hero-shape {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  top: -60px;
+  right: -60px;
+  background-color: #93C5FD; /* light blue */
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: 0;
 }
